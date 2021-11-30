@@ -21,7 +21,7 @@ class LemondeSpider(scrapy.Spider):
         for article in response.css(".river")[0].css(".teaser"):
             title = self.clean_spaces(article.css("h3::text").extract_first())
             image = article.css("img::attr(data-src)").extract_first()
-            description = article.css(".txt3::text").extract_first()
+            description = article.css(".teaser__desc::text").extract_first()
             yield {
                 "title":title,
                 "image":image,
